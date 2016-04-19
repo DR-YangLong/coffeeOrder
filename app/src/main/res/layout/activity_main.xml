@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="16dp"
+    tools:context="io.github.dr_yanglong.coffeeorder.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="quantity"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"/>
+
+    <Button
+        android:id="@+id/plus_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:layout_marginTop="16dp"
+        android:onClick="plusCoffee"/>
+
+    <TextView
+        android:id="@+id/coffee_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:text="0" />
+
+    <Button
+        android:id="@+id/minus_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:onClick="minusCoffee"/>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="price"
+        android:textAllCaps="true" />
+
+    <TextView
+        android:id="@+id/coffee_price"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/order_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="order"
+        android:onClick="order"/>
+</LinearLayout>
