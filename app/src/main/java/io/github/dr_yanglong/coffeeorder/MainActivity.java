@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView = (TextView) findViewById(R.id.coffee_price);
-        textView.setText(NumberFormat.getCurrencyInstance().format(num));
+        textView.setText("Please select coffee num!");
     }
 
     /**
@@ -75,6 +75,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void displayPrice(int price) {
         TextView priceView = (TextView) findViewById(R.id.coffee_price);
-        priceView.setText(NumberFormat.getCurrencyInstance().format(price));
+        priceView.setText("Total: "+NumberFormat.getCurrencyInstance().format(price)+"\nTank You!");
     }
 }
