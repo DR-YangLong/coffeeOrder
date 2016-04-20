@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView textView=(TextView) findViewById(R.id.coffee_price);
-        textView.setText(NumberFormat.getCurrencyInstance().format(0));
+        TextView textView = (TextView) findViewById(R.id.coffee_price);
+        textView.setText(NumberFormat.getCurrencyInstance().format(num));
     }
 
     /**
@@ -36,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
      * @param num 数量
      */
     private void displayNum(int num) {
-        TextView numView=(TextView) findViewById(R.id.coffee_num);
-        numView.setText(num+"");
+        TextView numView = (TextView) findViewById(R.id.coffee_num);
+        numView.setText(num + "");
     }
 
     /**
      * 减少咖啡数量
      */
     public void minusCoffee(View view) {
-        synchronized (num){
-            num=--num>0?num:0;
+        synchronized (num) {
+            num = --num > 0 ? num : 0;
             this.displayNum(num);
         }
     }
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
      * 增加咖啡数量
      */
     public void plusCoffee(View view) {
-        synchronized (num){
-            num=++num>=Integer.MAX_VALUE?Integer.MAX_VALUE:num;
+        synchronized (num) {
+            num = ++num >= Integer.MAX_VALUE ? Integer.MAX_VALUE : num;
             this.displayNum(num);
         }
     }
@@ -64,16 +64,17 @@ public class MainActivity extends AppCompatActivity {
      *下单，计算总价
      */
     public void order(View view) {
-        int totalPrice=num*price;
+        int totalPrice = num * price;
         this.displayPrice(totalPrice);
     }
 
     /**
      * 显示价格
+     *
      * @param price 价格
      */
-    private void displayPrice(int price){
-        TextView priceView= (TextView) findViewById(R.id.coffee_price);
+    private void displayPrice(int price) {
+        TextView priceView = (TextView) findViewById(R.id.coffee_price);
         priceView.setText(NumberFormat.getCurrencyInstance().format(price));
     }
 }
