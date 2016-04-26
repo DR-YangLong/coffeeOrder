@@ -1,8 +1,12 @@
 package io.github.dr_yanglong.coffeeorder;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -21,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
      * 咖啡价格
      */
     private static int price = DEFAULT_PRICE;
+    private boolean isAdCream = false;
+    private boolean isAdChocolate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +70,72 @@ public class MainActivity extends AppCompatActivity {
      *下单，计算总价
      */
     public void order(View view) {
+        price = DEFAULT_PRICE;
+        price += isAdCream ? 2 : 0;
+        price += isAdChocolate ? 3 : 0;
         int totalPrice = num * price;
-        this.displayPrice(totalPrice);
+        //生成订单信息
+        String msg = this.createOrderSummary(totalPrice);
+        Intent intent=new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); //调用email类型的app
+        intent.putExtra(Intent.EXTRA_SUBJECT,"Just Java order.");
+        intent.putExtra(Intent.EXTRA_TEXT,msg);
+        if(intent.resolveActivity(getPackageManager())!=null){//判断唤起的email类型app有没有
+            startActivity(intent);
+        }
+        this.displayPrice(msg);
     }
 
     /**
-     * 显示价格
+     * 显示
+     *
+     * @param priceMsg 价格信息
+     */
+    private void displayPrice(String priceMsg) {
+        TextView priceView = (TextView) findViewById(R.id.coffee_price);
+        priceView.setText(priceMsg);
+    }
+
+    /**
+     * 封装订单
      *
      * @param price 价格
+     * @return 订单详情字符串
      */
-    private void displayPrice(int price) {
-        TextView priceView = (TextView) findViewById(R.id.coffee_price);
-        priceView.setText("Total: "+NumberFormat.getCurrencyInstance().format(price)+"\nTank You!");
+    private String createOrderSummary(int price) {
+        String name = ((EditText) findViewById(R.id.edit_name_view)).getText().toString();
+        String priceMsg = "Name:" + name;
+        priceMsg += "\nAdd whipped cream?" + isAdCream;
+        priceMsg += "\nAdd chocolate?" + isAdChocolate;
+        priceMsg += "\nQuantity:" + num;
+        priceMsg += "\nTotal:" + NumberFormat.getCurrencyInstance().format(price);
+        priceMsg += "\nTank You!";
+        return priceMsg;
+    }
+
+    /**
+     * 加料
+     *
+     * @param view
+     */
+    public void addCream(View view) {
+        CheckBox checkBox = (CheckBox) view;
+        String id = view.getResources().getResourceName(view.getId());
+        if (id.contains("whipped_cream")) {
+            isAdCream = checkBox.isChecked() ? true : false;
+        }
+        if (id.contains("chocolate")) {
+            isAdChocolate = checkBox.isChecked() ? true : false;
+        }
+    }
+
+    /**
+     * 清空输入提示
+     *
+     * @param view EditText
+     */
+    public void clearTips(View view) {
+        EditText editText = (EditText) view;
+        ((EditText) view).setHint(null);
     }
 }
