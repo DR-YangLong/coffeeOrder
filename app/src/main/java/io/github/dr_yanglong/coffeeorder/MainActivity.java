@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView = (TextView) findViewById(R.id.coffee_price);
-        textView.setText("Please select coffee num!");
+        textView.setText(getResources().getString(R.string.select_tips));
     }
 
     /**
@@ -104,12 +104,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private String createOrderSummary(int price) {
         String name = ((EditText) findViewById(R.id.edit_name_view)).getText().toString();
-        String priceMsg = "Name:" + name;
-        priceMsg += "\nAdd whipped cream?" + isAdCream;
-        priceMsg += "\nAdd chocolate?" + isAdChocolate;
-        priceMsg += "\nQuantity:" + num;
-        priceMsg += "\nTotal:" + NumberFormat.getCurrencyInstance().format(price);
-        priceMsg += "\nTank You!";
+        String priceMsg = getResources().getString(R.string.name_line) + name;
+        priceMsg += "\n"+getResources().getString(R.string.ad_cream_line) + isAdCream;
+        priceMsg += "\n"+getResources().getString(R.string.ad_choco_line) + isAdChocolate;
+        priceMsg += "\n"+getResources().getString(R.string.detail_num_line) + num;
+        priceMsg += "\n"+getResources().getString(R.string.detail_total) + NumberFormat.getCurrencyInstance().format(price);
+        priceMsg += "\n"+getResources().getString(R.string.detail_thank_line);
         return priceMsg;
     }
 

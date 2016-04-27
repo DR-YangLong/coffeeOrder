@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">coffee order</string>
+    <string name="tips_line">Enter Customer\'s Name</string>
+    <string name="add_line">Toppings</string>
+    <string name="cream_line">Whipped cream</string>
+    <string name="choco_line">Chocolate</string>
+    <string name="num_line">quantity</string>
+    <string name="detail_line">order summary</string>
+    <string name="order_line">order</string>
+    <string name="name_line">Name:</string>
+    <string name="ad_cream_line">Add whipped cream?</string>
+    <string name="ad_choco_line">Add chocolate?</string>
+    <string name="detail_num_line">Quantity:</string>
+    <string name="detail_total">Total:</string>
+    <string name="detail_thank_line">Tank You!</string>
+    <string name="select_tips">please select coffee num!</string>
 </resources>

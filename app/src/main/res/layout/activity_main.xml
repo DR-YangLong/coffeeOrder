@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/MatchParent"
     tools:context="io.github.dr_yanglong.coffeeorder.MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/MatchParent"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:orientation="vertical">
@@ -16,68 +14,58 @@
             android:layout_marginTop="6dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Customer's Name"
+            android:hint="@string/tips_line"
             android:onClick="clearTips"
             android:inputType="text"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Toppings"
+            style="@style/WrapContent"
+            android:layout_marginTop="16dp"
+            android:text="@string/add_line"
             android:textAllCaps="true" />
 
         <CheckBox
             android:id="@+id/whipped_cream"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/WrapContent"
             android:layout_marginTop="8dp"
             android:onClick="addCream"
-            android:text="Whipped cream"
+            android:text="@string/ad_cream_line"
             android:textSize="16sp"
             android:paddingLeft="24dp"/>
         <CheckBox
             android:id="@+id/chocolate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            style="@style/WrapContent"
+            android:layout_marginTop="8dp"
             android:onClick="addCream"
-            android:text="Chocolate"
+            android:text="@string/ad_choco_line"
             android:textSize="16sp"
             android:paddingLeft="24dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="quantity"
-            android:textAllCaps="true"
+            style="@style/TextStyle"
+            android:text="@string/num_line"
             android:textColor="@android:color/black" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/WrapContent"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/minus_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WrapContent"
                 android:onClick="minusCoffee"
                 android:text="-" />
 
             <TextView
                 android:id="@+id/coffee_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WrapContent"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:text="0" />
 
             <Button
                 android:id="@+id/plus_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WrapContent"
                 android:onClick="plusCoffee"
                 android:text="+" />
 
@@ -85,26 +73,20 @@
 
         <TextView
             android:id="@+id/order_summary_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="order summary"
-            android:textAllCaps="true" />
+            style="@style/TextStyle"
+            android:text="@string/detail_line"
+            />
 
         <TextView
             android:id="@+id/coffee_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:text=""
-            android:textAllCaps="false" />
+            style="@style/TextStyle"
+            android:text="" />
 
         <Button
+            style="@style/WrapContent"
             android:id="@+id/order_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:onClick="order"
-            android:text="order" />
+            android:text="@string/order_line" />
     </LinearLayout>
 </ScrollView>
